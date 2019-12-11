@@ -5,6 +5,12 @@ let CREDENTIALS;
 let DATA_JSON;
 let GENRE_SEEDS; // used for top genres
 
+function cgi() {
+    let http = new XMLHttpRequest();
+    http.open('GET', '/cgi-bin/auth.py');
+    http.send();
+}
+
 /**
  * Make API request
  * @param requestType: type of request, e.g. GET, POST, etc
