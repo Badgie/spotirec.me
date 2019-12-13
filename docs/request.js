@@ -8,7 +8,8 @@ let GENRE_SEEDS; // used for top genres
 function cgi() {
     let http = new XMLHttpRequest();
     http.open('GET', '/cgi-bin/auth.py');
-    http.send();
+    http.send(window.location.href);
+    console.log('success');
 }
 
 /**

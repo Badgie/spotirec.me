@@ -1,6 +1,6 @@
 const OAUTH_AUTH_URL = 'https://accounts.spotify.com/authorize';
 const CLIENT_ID = '78ba9bb95f5b40a2b74bc7733ea3cd81';
-const REDIRECT_URL = 'https://spotirec.me/';
+const REDIRECT_URL = 'http://68.183.76.146/auth.php';
 const SCOPES = 'user-top-read playlist-modify-public playlist-modify-private user-read-private user-read-email ' +
     'ugc-image-upload user-read-playback-state user-modify-playback-state user-library-modify';
 
@@ -8,7 +8,7 @@ const SCOPES = 'user-top-read playlist-modify-public playlist-modify-private use
  * Authorize client using Spotify API and redirect to get credentials
  */
 function auth() {
-    let params = {'client_id': CLIENT_ID, 'response_type': 'token', 'redirect_uri': REDIRECT_URL, 'scope': SCOPES};
+    let params = {'client_id': CLIENT_ID, 'response_type': 'code', 'redirect_uri': REDIRECT_URL, 'scope': SCOPES};
     let serialize = function () {
         let str = [];
         for (let field in params) {
