@@ -81,7 +81,7 @@ def update_db(values):
 
 
 if __name__ == '__main__':
-    token = retrieve_access_token(args.auth)
+    token = retrieve_access_token(args.auth[0])
     vals = [get_user_id({'Authorization': f'Bearer {token["access_token"]}'}), token['access_token'],
             token['refresh_token'], int(token['expires_in']), round(time.time()) + int(token['expires_in']),
             token['token_type'], token['scope']]
