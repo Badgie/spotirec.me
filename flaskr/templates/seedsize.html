@@ -1,0 +1,63 @@
+<!doctype html>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+<title>{% block title %}Spotirec{% endblock %}</title>
+<link rel="stylesheet" href="{{ url_for('static', filename='style/bootstrap.min.css') }}">
+<link rel="stylesheet" href="{{ url_for('static', filename='style/style.css') }}">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Catamaran:100,200,300,400,500,600,700,800,900">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Muli">
+<script src="{{ url_for('static', filename='js/init.js') }}"></script>
+<script src="{{ url_for('static', filename='js/jquery.min.js') }}"></script>
+
+<nav class="navbar navbar-light navbar-expand-lg fixed-top" id="mainNav">
+    <div class="container"><a class="navbar-brand js-scroll-trigger" href="{{ url_for('main') }}">Spotirec</a><button data-toggle="collapse" data-target="#navbarResponsive" class="navbar-toggler float-right" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation"><i class="fa fa-bars"></i></button>
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+            <ul class="nav navbar-nav ml-auto">
+                <li class="nav-item" role="presentation"><a class="nav-link" href="">Documentation</a></li>
+                <li class="nav-item" role="presentation"><a class="nav-link" href="https://github.com/Badgie/spotirec">CLI</a></li>
+                <li class="nav-item" role="presentation"><a class="nav-link" href="https://github.com/Badgie/badgie.github.io">Source</a></li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<section class="masthead" style="background:url({{ url_for('static', filename='img/bg.png') }}), linear-gradient(to bottom, #000000, #136b32);height:100%;">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12 text-center">
+                <div class="section-heading text-center">
+                    <h2 class="txtcl">Choose seed size</h2>
+                </div>
+            </div>
+        </div>
+        <form method="post">
+            <div class="row" style="margin-top:1em">
+                <div class="col-lg-12 text-center">
+                    <div class="btn-group btn-group-toggle" data-toggle="buttons">
+                    <label class="btn btn-secondary" for="seed-size-1" id="seed-size-1-label">
+                        <input type="radio" name="seedsize" id="seed-size-1" value="1" autocomplete="off">1
+                    </label>
+                    <label class="btn btn-secondary" for="seed-size-2" id="seed-size-2-label">
+                        <input type="radio" name="seedsize" id="seed-size-2" value="2" autocomplete="off">2
+                    </label>
+                    <label class="btn btn-secondary" for="seed-size-3" id="seed-size-3-label">
+                        <input type="radio" name="seedsize" id="seed-size-3" value="3" autocomplete="off">3
+                    </label>
+                    <label class="btn btn-secondary" for="seed-size-4" id="seed-size-4-label">
+                        <input type="radio" name="seedsize" id="seed-size-4" value="4" autocomplete="off">4
+                    </label>
+                    <label class="btn btn-secondary active" for="seed-size-5" id="seed-size-5-label">
+                        <input type="radio" name="seedsize" id="seed-size-5" value="5" autocomplete="off" checked>5
+                    </label>
+                    </div>
+                </div>
+            </div>
+            <div class="row" style="margin-top:1em">
+                <div class="col-lg-12 text-center">
+                    <input type="submit" value="Next" class="btn btn-custom">
+                </div>
+            </div>
+        </form>
+    </div>
+    <script>seedSizeHandlers()</script>
+</section>

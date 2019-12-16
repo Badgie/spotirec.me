@@ -1,0 +1,76 @@
+<!doctype html>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+<title>{% block title %}Spotirec{% endblock %}</title>
+<link rel="stylesheet" href="{{ url_for('static', filename='style/bootstrap.min.css') }}">
+<link rel="stylesheet" href="{{ url_for('static', filename='style/style.css') }}">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Catamaran:100,200,300,400,500,600,700,800,900">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Muli">
+<script src="{{ url_for('static', filename='js/init.js') }}"></script>
+<script src="{{ url_for('static', filename='js/jquery.min.js') }}"></script>
+
+<nav class="navbar navbar-light navbar-expand-lg fixed-top" id="mainNav">
+    <div class="container"><a class="navbar-brand js-scroll-trigger" href="{{ url_for('main') }}">Spotirec</a><button data-toggle="collapse" data-target="#navbarResponsive" class="navbar-toggler float-right" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation"><i class="fa fa-bars"></i></button>
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+            <ul class="nav navbar-nav ml-auto">
+                <li class="nav-item" role="presentation"><a class="nav-link" href="">Documentation</a></li>
+                <li class="nav-item" role="presentation"><a class="nav-link" href="https://github.com/Badgie/spotirec">CLI</a></li>
+                <li class="nav-item" role="presentation"><a class="nav-link" href="https://github.com/Badgie/badgie.github.io">Source</a></li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<section class="masthead" style="background:url({{ url_for('static', filename='img/bg.png') }}), linear-gradient(to bottom, #000000, #136b32);height:auto;">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12 text-center">
+                <div class="section-heading text-center">
+                    <h2 class="txtcl">
+                        {% if data %}
+                        Select your seeds
+                        {% else %}
+                        Define your seeds
+                        {% endif %}
+                    </h2>
+                </div>
+            </div>
+        </div>
+        <form method="post">
+            {% if data %}
+                {% for x in range(0, len(data), 3) %}
+                    <div class="row justify-content-left">
+                        {% for y in range(x, x + 3) %}
+                            {% if y < len(data) %}
+                                <div class="col-lg-4">
+                                    <label for="seed-{{ y }}">
+                                        <input type="checkbox" value="{{ get_value(data[y]) }}" name="seed-{{ y }}" id="seed-{{ y }}"> {{ get_name(data[y]) }}
+                                    </label>
+                                </div>
+                            {% endif %}
+                        {% endfor %}
+                    </div>
+                {% endfor %}
+            {% else %}
+                {% for x in range(0, 5) %}
+                    <div class="row justify-content-center">
+                        <div class="col-lg-6 text-center" style="margin-top:1em">' +
+                            <input type="text" style="width:100%" name="seed-{{ x }}" id="seed-{{ x }}"/>
+                        </div>
+                    </div>
+                {% endfor %}
+            {% endif %}
+            <div class="row" style="margin-top:1em">
+                <div class="col-lg-12 text-center">
+                    <input type="submit" value="Next" class="btn btn-custom inactive" id="seed-select-btn">
+                </div>
+            </div>
+        </form>
+    </div>
+    {% if data %}
+    <script>checkBoxValidity({{ len(data) }});</script>
+    {% else %}
+    <script>anySeedValidityCheck();</script>
+    {% endif %}
+</section>
+

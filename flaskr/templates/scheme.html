@@ -1,0 +1,84 @@
+<!doctype html>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+<title>{% block title %}Spotirec{% endblock %}</title>
+<link rel="stylesheet" href="{{ url_for('static', filename='style/bootstrap.min.css') }}">
+<link rel="stylesheet" href="{{ url_for('static', filename='style/style.css') }}">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Catamaran:100,200,300,400,500,600,700,800,900">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Muli">
+<script src="{{ url_for('static', filename='js/init.js') }}"></script>
+<script src="{{ url_for('static', filename='js/jquery.min.js') }}"></script>
+
+<nav class="navbar navbar-light navbar-expand-lg fixed-top" id="mainNav">
+    <div class="container"><a class="navbar-brand js-scroll-trigger" href="{{ url_for('main') }}">Spotirec</a><button data-toggle="collapse" data-target="#navbarResponsive" class="navbar-toggler float-right" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation"><i class="fa fa-bars"></i></button>
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+            <ul class="nav navbar-nav ml-auto">
+                <li class="nav-item" role="presentation"><a class="nav-link" href="">Documentation</a></li>
+                <li class="nav-item" role="presentation"><a class="nav-link" href="https://github.com/Badgie/spotirec">CLI</a></li>
+                <li class="nav-item" role="presentation"><a class="nav-link" href="https://github.com/Badgie/badgie.github.io">Source</a></li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<section class="masthead" style="background:url({{ url_for('static', filename='img/bg.png') }}), linear-gradient(to bottom, #000000, #136b32);height:100%;">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12 text-center">
+                <div class="section-heading text-center">
+                    <h2 class="txtcl">Choose recommendation scheme</h2>
+                </div>
+            </div>
+        </div>
+        <form method="post">
+        <div class="row justify-content-center" style="margin-top:1em">
+            <h4 style="text-align: center" class="txtcl">Auto</h4>
+        </div>
+        <div class="row">
+            <div class="col-lg-12 text-center">
+                <div class="btn-group btn-group-toggle" data-toggle="buttons">
+                    <label class="btn btn-secondary" for="auto-artist" id="auto-artist-label">
+                        <input type="radio" name="scheme" id="auto-artist" value="auto artists" autocomplete="off">Artist
+                    </label>
+                    <label class="btn btn-secondary active" for="auto-track" id="auto-track-label">
+                        <input type="radio" name="scheme" id="auto-track" value="auto tracks" autocomplete="off" checked>Track
+                    </label>
+                    <label class="btn btn-secondary" for="auto-genre" id="auto-genre-label">
+                        <input type="radio" name="scheme" id="auto-genre" value="auto genres" autocomplete="off">Genre
+                    </label>
+                </div>
+            </div>
+        </div>
+        <div class="row justify-content-center" style="margin-top:1em">
+            <h4 style="text-align: center" class="txtcl">Custom</h4>
+        </div>
+        <div class="row">
+            <div class="col-lg-12 text-center">
+                <div class="btn-group btn-group-toggle" data-toggle="buttons">
+                    <label class="btn btn-secondary" for="custom-artist" id="custom-artist-label">
+                        <input type="radio" name="scheme" id="custom-artist" value="custom artists" autocomplete="off">Artist
+                    </label>
+                    <label class="btn btn-secondary" for="custom-track" id="custom-track-label">
+                        <input type="radio" name="scheme" id="custom-track" value="custom tracks" autocomplete="off">Track
+                    </label>
+                    <label class="btn btn-secondary" for="custom-genre" id="custom-genre-label">
+                        <input type="radio" name="scheme" id="custom-genre" value="custom genres" autocomplete="off">Genre
+                    </label>
+                    <label class="btn btn-secondary" for="custom-genre-seed" id="custom-genre-seed-label">
+                        <input type="radio" name="scheme" id="custom-genre-seed" value="custom genre-seeds" autocomplete="off">Genre seed
+                    </label>
+                    <label class="btn btn-secondary" for="custom-any" id="custom-any-label">
+                        <input type="radio" name="scheme" id="custom-any" value="custom any" autocomplete="off">Any
+                    </label>
+                </div>
+            </div>
+        </div>
+        <div class="row" style="margin-top:1em">
+            <div class="col-lg-12 text-center">
+                <input type="submit" value="Next" class="btn btn-custom">
+            </div>
+        </div>
+        </form>
+    </div>
+    <script>schemeHandlers()</script>
+</section>
