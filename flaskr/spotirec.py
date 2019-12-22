@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request, redirect
+from flask import Flask, render_template, request, redirect, url_for
 import oauth
 import conf
 import recommendation
@@ -9,12 +9,15 @@ import re
 import base64
 from io import BytesIO
 from PIL import Image
+from flaskext.markdown import Markdown
+import os
 
 app = Flask(__name__)
 app.config.from_object(conf.Config())
 with app.app_context():
     sp_oauth = oauth.SpotifyOAuth()
 rec = None
+md = Markdown(app)
 
 
 @app.route('/')
@@ -119,6 +122,12 @@ def finish():
     api.add_to_playlist(tracks, rec.playlist_id, sp_oauth.get_headers())
     add_image_to_playlist(tracks)
     return render_template('finish.html', id=rec.playlist_id)
+
+
+@app.route('/documentation')
+def docs():
+    with open(app.config['DOCS_PATH'], 'r') as f:
+        return render_template('docs.html', md=f.read())
 
 
 def get_user_top_genres() -> list:
