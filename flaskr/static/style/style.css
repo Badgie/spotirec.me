@@ -39,3 +39,8 @@ label {
     background: #ffb3b3;
     border-color: red;
 }
+
+.bg-size {
+    height:auto;
+    min-height:100%;
+}
