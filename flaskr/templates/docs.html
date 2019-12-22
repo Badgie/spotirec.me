@@ -1,0 +1,24 @@
+<!doctype html>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+<title>{% block title %}Spotirec{% endblock %}</title>
+<link rel="stylesheet" href="{{ url_for('static', filename='style/bootstrap.min.css') }}">
+<link rel="stylesheet" href="{{ url_for('static', filename='style/style.css') }}">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Catamaran:100,200,300,400,500,600,700,800,900">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Muli">
+<script src="{{ url_for('static', filename='js/jquery.min.js') }}"></script>
+
+<div id="nav"></div>
+<script>$(function(){$('#nav').load('{{ url_for('static', filename='nav.html') }}');});</script>
+
+<section id="greeter" class="masthead bg-size" style="background:url({{ url_for('static', filename='img/bg.png') }}), linear-gradient(to bottom, #000000, #136b32, #000000);">
+    <div class="container h-100">
+        <div class="row h-100">
+            <div class="col-lg-9 my-auto">
+                <div class="mx-auto header-content txtcl">
+                    {{ md|markdown }}
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
