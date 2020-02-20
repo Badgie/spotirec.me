@@ -10,7 +10,6 @@ import base64
 from io import BytesIO
 from PIL import Image
 from flaskext.markdown import Markdown
-import os
 
 app = Flask(__name__)
 app.config.from_object(conf.Config())
@@ -51,6 +50,11 @@ def token():
             return redirect(sp_oauth.get_authorize_url())
     else:
         return redirect('/spotirec')
+
+
+@app.route('/cli/auth')
+def cli_auth():
+    return redirect(sp_oauth.get_authorize_url())
 
 
 @app.route('/scheme', methods=('GET', 'POST'))
